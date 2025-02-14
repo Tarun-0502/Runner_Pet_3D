@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
     public status gameStatus; // Game status
     public bool isTv = false; // TV mode detection
 
-    private float currentSpeed; // Current speed
+    public float currentSpeed; // Current speed
 
     private void Awake() { Instance = this; }
 
