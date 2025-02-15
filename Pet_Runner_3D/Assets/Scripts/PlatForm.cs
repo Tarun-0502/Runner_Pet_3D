@@ -2,38 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class obstacles
-{
-    public Transform Barrier;
-}
-[System.Serializable]
-public class Collctables
-{
-    public Transform Coin;
-    public Transform Magnet;
-    public Transform Jet;
-    public Transform Coin_2x;
-    public Transform HoverBoard;
-}
 
 public class PlatForm : MonoBehaviour
 {
-    [SerializeField] obstacles Obstacles_Prefabs;
-    [SerializeField] Collctables Collctables_Prefabs;
+    [SerializeField] internal List<GameObject> Obstacles_Prefabs;
+    [SerializeField] internal List<GameObject> Collctables_Prefabs;
 
-    [SerializeField] List<GameObject> Obstacles = new List<GameObject>();
-    [SerializeField] List<Transform> ObstaclePositions;
+    [SerializeField] Transform ObstaclesParent;
+    [SerializeField] internal List<Transform> ObstaclePositions;
     [SerializeField] internal float length;
 
-    void Instiate_Obstacles()
+    bool Once;
+    private void OnTriggerEnter(Collider other)
     {
-
+        if (other.tag == "Player" && !Once)
+        {
+            Once = true;
+            Invoke("ResetValue", 3f);
+            StartCoroutine(Path_Contoller.Instance.SpwanNextPath(1.2f));
+        }
     }
 
-    void Instiate_Collectables()
+    void ResetValue()
     {
-
+        Once = false;
     }
-
 }

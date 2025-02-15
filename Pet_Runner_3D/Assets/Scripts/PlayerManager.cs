@@ -4,37 +4,38 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static PlayerManager Instance; // Singleton instance
-    [SerializeField] private float speed = 10.0f; // Player speed
+    public static PlayerManager Instance;
+    [SerializeField] private float speed = 10.0f;
 
-    private Rigidbody playerRB; // Rigidbody for physics-based movement
-    private CapsuleCollider playerCollider; // Player collider component
-    public Vector3 currentposition = Vector3.zero; // Current player position
-    public Animator animator; // Animator for character animations
+    private Rigidbody playerRB;
+    private CapsuleCollider playerCollider;
+    public Vector3 currentposition = Vector3.zero;
+    public Animator animator;
 
-    public float currentHeight = 1.0f; // Player height for jumps and crouches
+    public float currentHeight = 1.0f;
     public Transform groundCheck;
     public LayerMask groundLayer;
 
-    // Power-up timers
     public float jetTime = 15.0f;
     public float hoverBoardTime = 15.0f;
     public float powerShoesTime = 15.0f;
     public float MagnetTime = 15.0f;
     public float shiledTime = 5.0f;
-    public float jumpForce = 7.0f;
+    public float baseJumpForce = 7.0f;
 
-    public enum lane { left, middle, right } // Player lanes
-    public enum mode { run, jet, hoverBoard, powerJump, over } // Game modes
-    public enum status { Playing, Pause, GameOver } // Game status
+    public enum lane { left, middle, right }
+    public enum mode { run, jet, hoverBoard, powerJump, over }
+    public enum status { Playing, Pause, GameOver }
 
-    public lane currentLane; // Current lane
-    public mode gameMode; // Current mode
-    private mode previousGameMode; // For restoring mode
-    public status gameStatus; // Game status
-    public bool isTv = false; // TV mode detection
+    public lane currentLane;
+    public mode gameMode;
+    private mode previousGameMode;
+    public status gameStatus;
+    public bool isTv = false;
 
-    public float currentSpeed; // Current speed
+    public float currentSpeed;
+    private float elapsedTime = 0f;
+    [SerializeField] private float speedIncreaseRate = 0.5f; // Increase speed every second
 
     private void Awake() { Instance = this; }
 
@@ -50,11 +51,15 @@ public class PlayerManager : MonoBehaviour
         currentposition = transform.position;
     }
 
-    private void LoadPlayerPrefs() { /* Load power-up timers from preferences */ }
+    private void LoadPlayerPrefs() { }
 
     private void Update()
     {
         if (gameStatus != status.Playing) return;
+
+        elapsedTime += Time.deltaTime;
+        currentSpeed = speed + (elapsedTime * speedIncreaseRate); // Increase speed over time
+
         currentposition = transform.position + transform.forward * currentSpeed * Time.deltaTime;
         currentposition.y = Mathf.Clamp(currentposition.y, 0.0f, 10.0f);
 
@@ -78,7 +83,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void HandleTouchInputs() { /* Handle swipe inputs for mobile */ }
+    private void HandleTouchInputs() { }
 
     private void ShiftLane(int direction)
     {
@@ -90,9 +95,22 @@ public class PlayerManager : MonoBehaviour
     {
         if (IsGrounded())
         {
-            playerRB.velocity = new Vector3(playerRB.velocity.x, jumpForce, playerRB.velocity.z);
+            float jumpForce = baseJumpForce + (currentSpeed / 10f); // Increase jump force with speed
+            float jumpDuration = Mathf.Clamp(1f / currentSpeed, 0.3f, 1f); // Adjust jump duration based on speed
+
+            playerRB.velocity = new Vector3(playerRB.velocity.x, 0f, playerRB.velocity.z);
+            playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetTrigger("jump");
+
+            StartCoroutine(AdjustGravityDuringJump(jumpDuration));
         }
+    }
+
+    private IEnumerator AdjustGravityDuringJump(float jumpDuration)
+    {
+        Physics.gravity = new Vector3(0, -9.81f / jumpDuration, 0);
+        yield return new WaitForSeconds(jumpDuration);
+        Physics.gravity = new Vector3(0, -9.81f, 0);
     }
 
     private void Slide()
@@ -110,8 +128,8 @@ public class PlayerManager : MonoBehaviour
     private void AdjustPositionAccordingToLane()
     {
         float targetX = 0.0f;
-        if (currentLane == lane.left) targetX = -2.5f;
-        else if (currentLane == lane.right) targetX = 2.5f;
+        if (currentLane == lane.left) targetX = -3.5f;
+        else if (currentLane == lane.right) targetX = 3.5f;
         currentposition.x = Mathf.Lerp(currentposition.x, targetX, Time.deltaTime * 10);
     }
 
@@ -119,5 +137,4 @@ public class PlayerManager : MonoBehaviour
     {
         return Physics.CheckSphere(groundCheck.position, 0.17f, groundLayer);
     }
-
 }

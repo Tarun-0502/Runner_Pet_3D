@@ -1,110 +1,100 @@
-﻿using System.Collections;
-using UnityEngine;
-using static UnityEditor.PlayerSettings;
+﻿using UnityEngine;
+using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour // Changed class name from RunnerController to PlayerController
 {
-    public float speed = 10.0f;
-    public float laneDistance = 2.5f;
-    public float jumpForce = 7.0f;
+    private CharacterController controller; // Player character controller
+    public Vector3 moveVector; // Movement vector for the player
 
-    private int desiredLane = 1; // 0:left, 1:middle, 2:right
-    private Rigidbody rb;
-    private Animator animator;
-    public bool isGrounded;
-    public Vector2 startTouchPosition, endTouchPosition;
-    public bool isTv;
+    public float baseSpeed = 5.0f; // Base speed of the player
+    public float laneDistance = 3.0f; // Distance between lanes
+    private int desiredLane = 1; // Current lane (0=Left, 1=Middle, 2=Right)
+
+    private float jumpForce = 8.0f; // Jump force value
+    private float gravity = 12.0f; // Gravity value
+    private float verticalVelocity; // Current vertical velocity
+
+    private bool isSliding = false; // Flag for sliding state
+
+    // Power-up flags
+    private bool isMagnetActive = false;
+    private bool isJetActive = false;
+    private bool isHoverboardActive = false;
+
+    private float jetHeight = 5.0f; // Height when jet is active
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>();
-        //isTv = AndroidTV.IsAndroidOrFireTv();
+        controller = GetComponent<CharacterController>(); // Initialize character controller
     }
 
     void Update()
     {
-        //if (PlayerManager.gameOver)
-        //    return;
+        moveVector = Vector3.zero; // Reset movement vector
+        baseSpeed += 0.1f * Time.deltaTime; // Gradually increase speed
 
-        Vector3 targetPosition = transform.position;
-
-        if (isTv)
+        if (isJetActive)
         {
-            HandleTvInputs();
+            verticalVelocity = 0;
+            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, jetHeight, Time.deltaTime * 2), transform.position.z);
         }
         else
         {
-            HandleMobileInputs();
+            if (controller.isGrounded)
+            {
+                verticalVelocity = -0.1f;
+                if (Input.GetKeyDown(KeyCode.UpArrow)) verticalVelocity = jumpForce;
+            }
+            else verticalVelocity -= gravity * Time.deltaTime;
         }
 
-        MoveToLane(targetPosition);
+        if (Input.GetKeyDown(KeyCode.DownArrow) && !isSliding) StartCoroutine(Slide());
+
+        HandleLaneSwitching();
+
+        moveVector.y = verticalVelocity;
+        moveVector.z = baseSpeed;
+
+        controller.Move(moveVector * Time.deltaTime);
+        HandlePowerUps();
     }
 
-    private void HandleTvInputs()
+    private void HandleLaneSwitching()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow)) desiredLane = Mathf.Min(desiredLane + 1, 2);
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) desiredLane = Mathf.Max(desiredLane - 1, 0);
-        if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow)) Jump();
-        if (isGrounded && Input.GetKeyDown(KeyCode.DownArrow)) StartCoroutine(Slide());
-    }
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) desiredLane--;
+        if (Input.GetKeyDown(KeyCode.RightArrow)) desiredLane++;
+        desiredLane = Mathf.Clamp(desiredLane, 0, 2);
 
-    private void HandleMobileInputs()
-    {
-        if (SwipeRight()) desiredLane = Mathf.Min(desiredLane + 1, 2);
-        if (SwipeLeft()) desiredLane = Mathf.Max(desiredLane - 1, 0);
-        if (isGrounded && SwipeUp()) Jump();
-        if (isGrounded && SwipeDown()) StartCoroutine(Slide());
-    }
+        Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
+        if (desiredLane == 0) targetPosition += Vector3.left * laneDistance;
+        else if (desiredLane == 2) targetPosition += Vector3.right * laneDistance;
 
-    private void MoveToLane(Vector3 targetPosition)
-    {
-        if (desiredLane == 0) targetPosition.x = -laneDistance;
-        else if (desiredLane == 1) targetPosition.x = 0;
-        else if (desiredLane == 2) targetPosition.x = laneDistance;
-
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * speed);
-    }
-
-    private void Jump()
-    {
-        rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-        animator.SetTrigger("jump");
-        isGrounded = false;
+        transform.position = Vector3.Lerp(transform.position, targetPosition, 0.1f);
     }
 
     private IEnumerator Slide()
     {
-        animator.SetBool("isSliding", true);
+        isSliding = true;
+        controller.height = 1.0f;
         yield return new WaitForSeconds(1.0f);
-        animator.SetBool("isSliding", false);
+        controller.height = 2.0f;
+        isSliding = false;
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Ground")) isGrounded = true;
-    //    //if (collision.gameObject.CompareTag("Obstacle")) PlayerManager.gameOver = true;
-    //}
-
-    private bool SwipeLeft() => DetectSwipe(Vector2.left);
-    private bool SwipeRight() => DetectSwipe(Vector2.right);
-    private bool SwipeUp() => DetectSwipe(Vector2.up);
-    private bool SwipeDown() => DetectSwipe(Vector2.down);
-
-    private bool DetectSwipe(Vector2 direction)
+    private void HandlePowerUps()
     {
-        if (Input.touchCount == 1)
-        {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began) startTouchPosition = touch.position;
-            if (touch.phase == TouchPhase.Ended)
-            {
-                endTouchPosition = touch.position;
-                Vector2 swipeDelta = endTouchPosition - startTouchPosition;
-                swipeDelta = new Vector2(swipeDelta.x / Screen.width, swipeDelta.y / Screen.height); // Normalize for portrait mode
-                if (Vector2.Dot(swipeDelta.normalized, direction) > 0.8f) return true;
-            }
-        }
-        return false;
+        if (Input.GetKeyDown(KeyCode.M)) ActivateMagnet();
+        if (Input.GetKeyDown(KeyCode.J)) ActivateJet();
+        if (Input.GetKeyDown(KeyCode.H)) ActivateHoverboard();
+    }
+
+    private void ActivateMagnet() { isMagnetActive = true; StartCoroutine(DeactivatePowerUp(() => isMagnetActive = false, 10f)); }
+    private void ActivateJet() { isJetActive = true; StartCoroutine(DeactivatePowerUp(() => isJetActive = false, 10f)); }
+    private void ActivateHoverboard() { isHoverboardActive = true; StartCoroutine(DeactivatePowerUp(() => isHoverboardActive = false, 10f)); }
+
+    private IEnumerator DeactivatePowerUp(System.Action deactivate, float time)
+    {
+        yield return new WaitForSeconds(time);
+        deactivate();
     }
 }
