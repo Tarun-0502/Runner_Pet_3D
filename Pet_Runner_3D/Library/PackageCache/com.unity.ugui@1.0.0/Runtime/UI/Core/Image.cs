@@ -10,6 +10,7 @@ namespace UnityEngine.UI
     /// Image is a textured element in the UI hierarchy.
     /// </summary>
 
+    [RequireComponent(typeof(CanvasRenderer))]
     [AddComponentMenu("UI/Image", 11)]
     /// <summary>
     ///   Displays a Sprite inside the UI System.
@@ -690,6 +691,7 @@ namespace UnityEngine.UI
             set
             {
                 m_PixelsPerUnitMultiplier = Mathf.Max(0.01f, value);
+                SetVerticesDirty();
             }
         }
 
@@ -1116,7 +1118,7 @@ namespace UnityEngine.UI
             if (tileHeight <= 0)
                 tileHeight = yMax - yMin;
 
-            if (activeSprite != null && (hasBorder || activeSprite.packed || activeSprite.texture.wrapMode != TextureWrapMode.Repeat))
+            if (activeSprite != null && (hasBorder || activeSprite.packed || activeSprite.texture != null && activeSprite.texture.wrapMode != TextureWrapMode.Repeat))
             {
                 // Sprite has border, or is not in repeat mode, or cannot be repeated because of packing.
                 // We cannot use texture tiling so we will generate a mesh of quads to tile the texture.
@@ -1822,14 +1824,12 @@ namespace UnityEngine.UI
                 {
                     float lerp = Mathf.InverseLerp(adjustedBorder[i], rect.size[i] - adjustedBorder[i + 2], local[i]);
                     local[i] = Mathf.Lerp(border[i], spriteRect.size[i] - border[i + 2], lerp);
-                    continue;
                 }
                 else
                 {
                     local[i] -= adjustedBorder[i];
                     local[i] = Mathf.Repeat(local[i], spriteRect.size[i] - border[i] - border[i + 2]);
                     local[i] += border[i];
-                    continue;
                 }
             }
 

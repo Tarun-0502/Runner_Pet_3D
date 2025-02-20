@@ -9,6 +9,7 @@ public class InstiateObstacle : MonoBehaviour
 
     private void Start()
     {
-        Obstacle = GameObject.Instantiate(PlatForm.Obstacles_Prefabs[Random.Range(0,PlatForm.Obstacles_Prefabs.Count)],transform);
+        Obstacle = GameObject.Instantiate(PlatForm.Obstacles_Prefabs[Random.Range(0, PlatForm.Obstacles_Prefabs.Count-1)], transform);
     }
+
 }

@@ -9,7 +9,6 @@ public class PlatForm : MonoBehaviour
     [SerializeField] internal List<GameObject> Collctables_Prefabs;
 
     [SerializeField] Transform ObstaclesParent;
-    [SerializeField] internal List<Transform> ObstaclePositions;
     [SerializeField] internal float length;
 
     bool Once;

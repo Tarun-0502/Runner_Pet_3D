@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
     [SerializeField] private float speed = 10.0f;
+    [SerializeField] private float laneDistance = 3f;
 
     private Rigidbody playerRB;
     private CapsuleCollider playerCollider;
@@ -128,8 +129,8 @@ public class PlayerManager : MonoBehaviour
     private void AdjustPositionAccordingToLane()
     {
         float targetX = 0.0f;
-        if (currentLane == lane.left) targetX = -3.5f;
-        else if (currentLane == lane.right) targetX = 3.5f;
+        if (currentLane == lane.left) targetX = -laneDistance;
+        else if (currentLane == lane.right) targetX = laneDistance;
         currentposition.x = Mathf.Lerp(currentposition.x, targetX, Time.deltaTime * 10);
     }
 

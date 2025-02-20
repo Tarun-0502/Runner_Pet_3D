@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Path_Contoller : MonoBehaviour
 {
-    [SerializeField] PlatForm platForms_Preafbs;
+    [SerializeField] List<PlatForm> platForms_Preafbs;
     [SerializeField] List<PlatForm> PlatFormList;
     PlatForm previousBlock;
-    float zPos;
+    float zPos=-694.52f;
+    [SerializeField] internal int _X=0;
 
     #region SINGLETON
 
@@ -30,7 +31,7 @@ public class Path_Contoller : MonoBehaviour
     {
         for (int i = 0;i < 3;i++)
         {
-            PlatForm block = Instantiate(platForms_Preafbs,transform);
+            PlatForm block = Instantiate(platForms_Preafbs[i],transform);
             block.transform.position = new Vector3(0,0,zPos);
             PlatFormList.Add(block);
             zPos += block.length;
