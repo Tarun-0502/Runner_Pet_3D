@@ -1220,6 +1220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 1
   Obstacle: {fileID: 0}
 --- !u!1 &840539618278255533
 GameObject:
@@ -1765,6 +1766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 1
   Obstacle: {fileID: 0}
 --- !u!1 &1202427178641799677
 GameObject:
@@ -6127,6 +6129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 0
   Obstacle: {fileID: 0}
 --- !u!1 &3063396355794294946
 GameObject:
@@ -6172,6 +6175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 0
   Obstacle: {fileID: 0}
 --- !u!1 &3280953473769629599
 GameObject:
@@ -6703,6 +6707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 0
   Obstacle: {fileID: 0}
 --- !u!1 &3449662229198783766
 GameObject:
@@ -6823,6 +6828,12 @@ MonoBehaviour:
   - {fileID: 6387877060044064067, guid: 6b1c5eb2d39558340b272d059aa76d82, type: 3}
   - {fileID: 4943961083643208753, guid: 2f38a45f6e7bf0a4e93839d7b3550d3e, type: 3}
   - {fileID: 6265791866305456435, guid: 803a8d36a34992447bb2d92bbdcd5fb7, type: 3}
+  Static_VehiclesPrefabs:
+  - {fileID: 3063178228543041425, guid: 94fc938f36cfed34f91c3d9eaf3b2eb6, type: 3}
+  - {fileID: 8912173330189461473, guid: aa31b58dd5c227c43912ec6c6189410a, type: 3}
+  - {fileID: 3113294925165799586, guid: 7ee16de8c0b41814f9bb68abd09043c7, type: 3}
+  - {fileID: 6547151707782106134, guid: db44269c314202e44802c83f3bf483ef, type: 3}
+  Moving_Vechicles: []
   Collctables_Prefabs: []
   ObstaclesParent: {fileID: 6126258624069219126}
   length: 694.52
@@ -7694,6 +7705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 1
   Obstacle: {fileID: 0}
 --- !u!1 &3856618313030467977
 GameObject:
@@ -8644,6 +8656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 0
   Obstacle: {fileID: 0}
 --- !u!1 &4396247163172954828
 GameObject:
@@ -10323,6 +10336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 1
   Obstacle: {fileID: 0}
 --- !u!1 &5366770439003943200
 GameObject:
@@ -11435,6 +11449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 0
   Obstacle: {fileID: 0}
 --- !u!1 &5689756382478628939
 GameObject:
@@ -11656,6 +11671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 0
   Obstacle: {fileID: 0}
 --- !u!1 &5816283021943170412
 GameObject:
@@ -12412,6 +12428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 0
   Obstacle: {fileID: 0}
 --- !u!1 &6193960375187590206
 GameObject:
@@ -12457,6 +12474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 1
   Obstacle: {fileID: 0}
 --- !u!1 &6317214011263344052
 GameObject:
@@ -12826,6 +12844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 0
   Obstacle: {fileID: 0}
 --- !u!1 &6591775941607639939
 GameObject:
@@ -13533,6 +13552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 1
   Obstacle: {fileID: 0}
 --- !u!1 &6872778936110047878
 GameObject:
@@ -17596,6 +17616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 0
   Obstacle: {fileID: 0}
 --- !u!1 &9078494275709861906
 GameObject:
@@ -17641,4 +17662,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatForm: {fileID: 6455456625442932952}
+  vehicle: 0
   Obstacle: {fileID: 0}

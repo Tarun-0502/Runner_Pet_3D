@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
         LoadPlayerPrefs();
         playerCollider = GetComponent<CapsuleCollider>();
         playerRB = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>();
+        //animator = GetComponentInChildren<Animator>();
         currentLane = lane.middle;
         gameMode = mode.run;
         currentSpeed = speed;
@@ -137,5 +137,10 @@ public class PlayerManager : MonoBehaviour
     bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, 0.17f, groundLayer);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
     }
 }

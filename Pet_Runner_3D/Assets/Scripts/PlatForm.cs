@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlatForm : MonoBehaviour
 {
     [SerializeField] internal List<GameObject> Obstacles_Prefabs;
+    [SerializeField] internal List<GameObject> Static_VehiclesPrefabs;
+    [SerializeField] internal List<GameObject> Moving_Vechicles;
     [SerializeField] internal List<GameObject> Collctables_Prefabs;
 
     [SerializeField] Transform ObstaclesParent;

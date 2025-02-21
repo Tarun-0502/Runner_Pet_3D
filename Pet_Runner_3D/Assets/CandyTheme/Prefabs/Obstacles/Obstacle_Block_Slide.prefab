@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6422690012108209010}
   m_Layer: 0
   m_Name: Block_Slide
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 6766975186939552087}
   m_Layer: 0
   m_Name: Obstacle_Block_Slide
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
