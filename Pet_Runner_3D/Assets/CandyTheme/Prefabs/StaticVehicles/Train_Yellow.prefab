@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8869303783336060738}
   - component: {fileID: 4257825469861253279}
   - component: {fileID: 7555234700121645641}
-  - component: {fileID: 2599356715723459784}
+  - component: {fileID: 4648070109182494774}
   m_Layer: 0
   m_Name: pSphere2_lambert1_0.007
   m_TagString: Obstacle
@@ -178,8 +178,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2599356715723459784
-MeshCollider:
+--- !u!65 &4648070109182494774
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -188,10 +188,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3764060035014364762, guid: bce1e5de95f2b6f4391dffb1e678f8e6, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.031689502, y: 0.16418651, z: 0.041226745}
+  m_Center: {x: -0.0006457027, y: 0.03815604, z: 0.0037282205}
 --- !u!1 &5594630690373887612
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +202,7 @@ GameObject:
   - component: {fileID: 4300850709179512488}
   - component: {fileID: 7413781143636675056}
   - component: {fileID: 3848335454094962162}
-  - component: {fileID: 5594630690373887613}
+  - component: {fileID: 2313259842276571864}
   m_Layer: 0
   m_Name: pCylinder23_lambert1_0.018
   m_TagString: Obstacle
@@ -274,7 +273,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5594630690373887613
+--- !u!64 &2313259842276571864
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
