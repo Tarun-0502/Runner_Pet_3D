@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float forwardSpeed = 5.0f;
     [SerializeField] private float speedIncreaseRate = 0.1f;
     [SerializeField] internal Collider playerCollider;
+    [SerializeField] Transform SkyBox_;
 
     #endregion
 
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 moveDirection = new Vector3(Mathf.Lerp(transform.position.x, targetX, Time.deltaTime * moveSpeed) - transform.position.x, targetY * Time.deltaTime, forwardSpeed * Time.deltaTime);
         characterController.Move(moveDirection);
+        SkyBox_.transform.position = new Vector3(SkyBox_.position.x,SkyBox_.position.y, transform.position.z);
 
         Jump();
         Slide();
