@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638756339224843453
-    m_Hash: 2365146898
+      ticks: 638762297764970734
+    m_Hash: 969256961
   m_LockFileStatus:
     m_FilePath: D:/Runner_Pet_3D/Pet_Runner_3D/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638756339224873456
-    m_Hash: 3239479480
+      ticks: 638762297765010741
+    m_Hash: 347473111
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -987,12 +987,12 @@ m_PackageAssets:
         url: https://github.com/Unity-Technologies/com.unity.ide.vscode.git
         revision: b0740c80bfc2440527c317109f7c3d9100132722
         path: 
-    - packageId: com.unity.postprocessing@3.1.1
+    - packageId: com.unity.postprocessing@3.2.2
       testable: 0
       isDirectDependency: 1
-      version: 3.1.1
+      version: 3.2.2
       source: 1
-      resolvedPath: D:\Runner_Pet_3D\Pet_Runner_3D\Library\PackageCache\com.unity.postprocessing@3.1.1
+      resolvedPath: D:\Runner_Pet_3D\Pet_Runner_3D\Library\PackageCache\com.unity.postprocessing@3.2.2
       assetPath: Packages/com.unity.postprocessing
       name: com.unity.postprocessing
       displayName: Post Processing
@@ -1078,13 +1078,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637576678760000000
+      datePublishedTicks: 637855259850000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: git+https://github.com/Unity-Technologies/Graphics.git
-        revision: 075b452f2c4bf910a168632b3cedbd6835477ddd
+        url: https://github.com/Unity-Technologies/Graphics.git
+        revision: 815ce78463c7d3006fa97cd6e8898d91cb9c3ebf
         path: 
     - packageId: com.unity.recorder@2.5.7
       testable: 0

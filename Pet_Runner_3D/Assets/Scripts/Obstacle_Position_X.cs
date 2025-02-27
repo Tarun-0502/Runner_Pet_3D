@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Obstacle_Position_X : MonoBehaviour
 {
-    private List<float> posX = new List<float>() { -3f, 0f, 3f };
+    private List<float> posX = new List<float>() { -2.7f, 0f, 2.7f };
 
     private void OnEnable()
     {

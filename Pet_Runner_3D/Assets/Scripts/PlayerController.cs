@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedIncreaseRate = 0.1f;
     [SerializeField] internal Collider playerCollider;
     [SerializeField] Transform SkyBox_;
+    [SerializeField] CollectablesManager collectablesManager_;
 
     #endregion
 
@@ -221,4 +222,14 @@ public class PlayerController : MonoBehaviour
         float average = ((minZ + maxZ) / 2f - colBounds.min.z) / colBounds.size.z;
         return average > colBounds.size.z - 0.33f ? HitZ.Backward : average < 0.33f ? HitZ.Forward : HitZ.Mid;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag=="Coin")
+        {
+            collectablesManager_.Coins++;
+            other.gameObject.SetActive(false);
+        }
+    }
+
 }

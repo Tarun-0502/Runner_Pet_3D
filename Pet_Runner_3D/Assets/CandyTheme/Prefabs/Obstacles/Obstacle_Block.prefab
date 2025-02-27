@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6366844533317546625}
   - component: {fileID: 5787126638274639688}
   - component: {fileID: 5557999150304542780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block
-  m_TagString: Obstacle
+  m_TagString: EnemyObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,9 +106,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5338784164876827588}
   - component: {fileID: 8391390783367468686}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle_Block
-  m_TagString: Obstacle
+  m_TagString: EnemyObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
