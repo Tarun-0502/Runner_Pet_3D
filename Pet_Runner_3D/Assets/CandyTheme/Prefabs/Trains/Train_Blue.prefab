@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6145718761434742022}
   - component: {fileID: 8485538082610339237}
   - component: {fileID: 3691988919158611276}
-  - component: {fileID: 75906543917906742}
+  - component: {fileID: 3872486119145982549}
   m_Layer: 9
   m_Name: BlueTrain
-  m_TagString: EnemyObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &75906543917906742
-BoxCollider:
+--- !u!64 &3872486119145982549
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,9 +92,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.052681, y: 4.4241867, z: 9.43437}
-  m_Center: {x: 0.0011824965, y: 1.0896604, z: 1.0601345}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: df56cc977a3fc2a4087c468c8eead4d4, type: 2}
 --- !u!1 &7138059719988235678
 GameObject:
   m_ObjectHideFlags: 0

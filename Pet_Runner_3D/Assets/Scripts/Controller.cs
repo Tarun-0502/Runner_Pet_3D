@@ -29,18 +29,18 @@ public class Controller : MonoBehaviour
 
         Vector3 move = Vector3.forward * speed * Time.deltaTime;
 
-        //// Apply Gravity
-        //if (characterController.isGrounded)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        //        Jump();
-        //    else
-        //        verticalSpeed = 0;
-        //}
-        //else
-        //{
-        //    verticalSpeed -= gravity * Time.deltaTime;
-        //}
+        // Apply Gravity
+        if (characterController.isGrounded)
+        {
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                Jump();
+            else
+                verticalSpeed = 0;
+        }
+        else
+        {
+            verticalSpeed -= gravity * Time.deltaTime;
+        }
 
         // Lane Movement
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
@@ -54,7 +54,7 @@ public class Controller : MonoBehaviour
 
         // Apply movement
         move.y = verticalSpeed * Time.deltaTime;
-        move.x = Mathf.Lerp(transform.position.x, laneIndex * laneDistance, Time.deltaTime * 10);
+        move.x = Mathf.Lerp(laneIndex * laneDistance, transform.position.y, Time.deltaTime * 10);
         characterController.Move(move);
     }
 

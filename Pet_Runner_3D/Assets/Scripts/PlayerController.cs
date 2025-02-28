@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cinemachine;
+using UnityEngine;
 
  #region USER-DEFINED-CLASS
 
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] internal Collider playerCollider;
     [SerializeField] Transform SkyBox_;
     [SerializeField] CollectablesManager collectablesManager_;
+    [SerializeField] CinemachineVirtualCamera Cam_Vir;
 
     #endregion
 
@@ -172,7 +174,9 @@ public class PlayerController : MonoBehaviour
 
     void TriggerGameOver()
     {
-        Debug.LogError("Game Over!");
+        Anim.CrossFadeInFixedTime("Dead", 0.1f);
+        gameStatus = Status.GameOver;
+        //Debug.LogError("Game Over!");
     }
 
     //private HitX GetHitX(Collider col)

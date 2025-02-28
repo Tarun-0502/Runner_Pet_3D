@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 755904342142055456}
   m_Layer: 9
   m_Name: YellowTrain
-  m_TagString: EnemyObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6213869866660820441}
   m_Layer: 9
   m_Name: Yellow
-  m_TagString: EnemyObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 3824204735441766964}
   m_Layer: 9
   m_Name: polySurface5.001
-  m_TagString: EnemyObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 1932028219978245609}
   m_Layer: 9
   m_Name: pasted__pCylinder23_lambert1_0.018
-  m_TagString: EnemyObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

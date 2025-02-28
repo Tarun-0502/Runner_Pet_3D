@@ -10,7 +10,7 @@ public class ArrangeCoins : MonoBehaviour
     [SerializeField] CollectablesManager cMgr;
 
     int posIndex = 1; // Start at 0 position
-    float[] positions = { -3f, 0.0f, 3f };
+    float[] positions = { -2.7f, 0.0f, 2.7f };
     int zPos;
     bool placeCoins = true;
 
@@ -32,7 +32,7 @@ public class ArrangeCoins : MonoBehaviour
         // Place coins at specific intervals
         if ((int)transform.position.z > zPos + 1 && placeCoins)
         {
-            Debug.Log("Coin Placed");
+            //Debug.Log("Coin Placed");
             zPos = Mathf.CeilToInt(transform.position.z);
             cMgr.PlaceCoin(transform, positions[posIndex]); // Ensures correct X position
         }

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5682598512635729924}
   - component: {fileID: 7396231885587869767}
   - component: {fileID: 7075164729342715925}
-  - component: {fileID: 4649511337218733040}
+  - component: {fileID: 4286840082122232783}
   m_Layer: 9
   m_Name: GreenTrain
-  m_TagString: EnemyObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4649511337218733040
-BoxCollider:
+--- !u!64 &4286840082122232783
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,9 +92,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.052682, y: 4.4241867, z: 23.564049}
-  m_Center: {x: 0.00004145503, y: 1.165753, z: 1.4852204}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: c4d0a44f445e08f4087f8a8e8f217a23, type: 2}
 --- !u!1 &6962806357616332955
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6228439127154181648}
   m_Layer: 9
   m_Name: pasted__pasted__pasted__pCube1_lambert1_0.002
-  m_TagString: EnemyObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6944260365360986703}
   m_Layer: 9
   m_Name: pasted__pCylinder25_lambert1_0.140
-  m_TagString: EnemyObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 8463067816669438797}
   m_Layer: 9
   m_Name: PurpleTrain
-  m_TagString: EnemyObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

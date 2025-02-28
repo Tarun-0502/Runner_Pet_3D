@@ -6,11 +6,11 @@ using UnityEngine;
 public class onCollision : MonoBehaviour
 {
     public PlayerController controller;
-    public TagField TagField;
+    [SerializeField] string collisionTag = "EnemyObject";
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Obstacle"))
+        if(other.CompareTag(collisionTag))
         {
             controller.HandleCollision(other);
         }
